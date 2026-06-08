@@ -1,4 +1,4 @@
-let totalWeight = 287.7
+let totalWeight = 468
 let platesWeight = (totalWeight-45)/2
 let remainingWeight
 
