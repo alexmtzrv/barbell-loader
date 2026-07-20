@@ -1,7 +1,6 @@
 const loadButton = document.getElementById('button')
 const barbellRadioNode = document.getElementsByName('barbell')
 const referenceWeightInput = document.getElementById('referenced-weight')
-const percentageInput = document.getElementById('percentage')
 const availablePlates = [45,35,25,15,10,5,2.5,2,1.5,1,0.5]
 
 function getBarbellWeight (radioNode){
@@ -19,7 +18,12 @@ function convertPercentage (percent){
 
 function calculateRealWeight (barbellWeight, referenceWeight, percentage){
     // Calculamos el porcentaje deseado al peso de referencia, restamos el peso de la barra y dividimos entre dos
-    return ((referenceWeight * percentage)-(barbellWeight))/2
+    let targetWeight = referenceWeight * percentage
+    let weightBySide = (targetWeight - barbellWeight) / 2
+    return{
+        targetWeight,
+        weightBySide
+    }
 }
 
 function calculatePlates (sideWeight){
@@ -33,11 +37,8 @@ function calculatePlates (sideWeight){
             loadingArray.push(availablePlates[i])
         }
     }
-
-    console.log(`Remaining weight: ${sideWeight}`)
-
     return{
-        plates: loadingArray,
+        loadingArray,
         remainingWeight: sideWeight
     }
 }
@@ -46,13 +47,20 @@ loadButton.addEventListener('click', () => {
     // Guardamos el peso de la barra elegida
     const emptyBarbellWeight = parseInt(getBarbellWeight(barbellRadioNode))
     // Guardamos el peso a ser referenciado
-    const totalWeight = parseFloat(referenceWeightInput.value)
-    // Guardamos el peso neto que hay que cargar en un solo lado de la barra segun el porcentaje elegido
-    const sidePlatesWeight = calculateRealWeight(emptyBarbellWeight, totalWeight, convertPercentage(percentageInput.value))
-    console.log(sidePlatesWeight)
+    const referenceWeight = parseFloat(referenceWeightInput.value)
+    // Guardamos el peso total del porcentaje y el peso de carga de discos
+    const percentage = parseFloat(document.getElementById('percentage').value)
+    const weightCalculation = calculateRealWeight(emptyBarbellWeight, referenceWeight, convertPercentage(percentage))
     // Calculamos los diferente discos a cargar de cada lado y lo guardamos en una variable
-    const platesBySide = calculatePlates(sidePlatesWeight)
-    console.log(platesBySide.plates)
-    console.log(`Remaining weight: ${platesBySide.remainingWeight}`)
+    const platesCalculation = calculatePlates(weightCalculation.weightBySide)
+    // Creamos un objeto para almacenar toda la información del porcentaje consultado
+    const loadingResult = {
+        emptyBarbellWeight,
+        referenceWeight,
+        percentage,
+        weightCalculation,
+        platesCalculation
+    }
+    console.log(loadingResult)
 })
 
