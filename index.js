@@ -28,20 +28,30 @@ function calculateRealWeight (barbellWeight, referenceWeight, percentage){
 
 function calculatePlates (sideWeight){
     // Creamos un array vacío que almacenará los discos a usar
-    let loadingArray = []
+    const loadingArray = []
     // Recorremos el array de discos disponibles
-    for (let i = 0; i < availablePlates.length; i++) {
-        // Si nuestro peso es mayor al disco, le restamos hasta que este sea menor
-        while (sideWeight >= availablePlates[i]){
-            sideWeight -= availablePlates[i]
-            loadingArray.push(availablePlates[i])
+    for (const plate of availablePlates) {
+        let plateCounter = 0
+        // Si nuestro peso es mayor al disco, le restamos hasta que este sea menor y contamos cuantos discos de ese peso necesitamos
+        while (sideWeight >= plate){
+            plateCounter ++
+            sideWeight -= plate
+        }
+        //Evaluamos si necesitamos al menos un disco de ese peso, guardamos un objeto con el peso del disco, y la cantidad necesitada
+        if (plateCounter > 0){
+            loadingArray.push({
+                plateWeight: plate,
+                quantity: plateCounter,
+            })
         }
     }
+    // Devolvemos un objeto que contiene, el el array de discos a usar, y el peso restante
     return{
         loadingArray,
         remainingWeight: sideWeight
     }
 }
+
 
 loadButton.addEventListener('click', () => {
     // Guardamos el peso de la barra elegida
