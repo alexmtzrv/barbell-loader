@@ -81,19 +81,26 @@ function calculatePlates (sideWeight){
     }
 }
 
-function drawPlates(loadingArray){
+function drawPlates(result){
+    // Creamos un array que almacenará elementos span que representan los discos a renderizar
     const plateElements = []
-    for (const plate of loadingArray.platesCalculation.loadingArray) {
+    // Recorremos el parámetro que es un array de discos por lado del resultado
+    for (const plate of result.loadingArray) {
+        // Hace un loop para producir n cantidad de discos de cada peso
         for (let i = 0; i < plate.quantity; i++){
+            // Guardamos el objeto que corresponde al disco según su peso
+            const style = plateStyle[plate.plateWeight]
+            // Creamos el elemento span
             const plateDisplayDraw = document.createElement('span')
             plateDisplayDraw.classList.add('plates-display-draw')
-            plateDisplayDraw.style.backgroundColor = plateStyle[plate.plateWeight].color
-
-            if(plateStyle[plate.plateWeight].width && plateStyle[plate.plateWeight].height){
-                plateDisplayDraw.style.width = plateStyle[plate.plateWeight].width
-                plateDisplayDraw.style.height = plateStyle[plate.plateWeight].height
+            // Mediante el objeto guardado anteriormente, asignamos color al disco
+            plateDisplayDraw.style.backgroundColor = style.color
+            // Si el objeto tiene un width y height específico, lo asignamos
+            if(style.width && style.height){
+                plateDisplayDraw.style.width = style.width
+                plateDisplayDraw.style.height = style.height
             }
-
+            // Guardamos ese disco en el arreglo
             plateElements.push(plateDisplayDraw)
         }
     }
@@ -111,7 +118,7 @@ function renderResult(result){
 
     const cardPercentageText = document.createElement('p')
     cardPercentage.classList.add('card-percentage-text')
-    cardPercentageText.textContent = `${result.percentage} % of ${result.referenceWeight} lbs = ${result.weightCalculation.targetWeight}`
+    cardPercentageText.textContent = `${result.percentage.toFixed(2)} % of ${result.referenceWeight.toFixed(2)} lbs = ${result.weightCalculation.targetWeight.toFixed(2)} lbs`
     cardPercentage.appendChild(cardPercentageText)
     card.appendChild(cardPercentage)
 
@@ -125,29 +132,29 @@ function renderResult(result){
     cardBarbellText.textContent = `Barbell : ${result.emptyBarbellWeight}`
     cardBarbell.appendChild(cardBarbellText)
 
-    const cardBarbellDraw = document.createElement('div')
-    cardBarbellDraw.classList.add('card-barbell-draw')
-    cardBarbell.appendChild(cardBarbellDraw)
-
-    const barbellDrawBarrel = document.createElement('span')
-    barbellDrawBarrel.classList.add('barbell-draw-barrel')
-    cardBarbellDraw.appendChild(barbellDrawBarrel)
-
-    const barbellDrawCollar = document.createElement('span')
-    barbellDrawCollar.classList.add('barbell-draw-collar')
-    cardBarbellDraw.appendChild(barbellDrawCollar)
-
-    const barbellDrawTube = document.createElement('span')
-    barbellDrawTube.classList.add('barbell-draw-tube')
-    cardBarbellDraw.appendChild(barbellDrawTube)
-
-    const barbellDrawCollar2 = document.createElement('span')
-    barbellDrawCollar2.classList.add('barbell-draw-collar')
-    cardBarbellDraw.appendChild(barbellDrawCollar2)
-
-    const barbellDrawBarrel2 = document.createElement('span')
-    barbellDrawBarrel2.classList.add('barbell-draw-barrel')
-    cardBarbellDraw.appendChild(barbellDrawBarrel2)
+    // const cardBarbellDraw = document.createElement('div')
+    // cardBarbellDraw.classList.add('card-barbell-draw')
+    // cardBarbell.appendChild(cardBarbellDraw)
+    //
+    // const barbellDrawBarrel = document.createElement('span')
+    // barbellDrawBarrel.classList.add('barbell-draw-barrel')
+    // cardBarbellDraw.appendChild(barbellDrawBarrel)
+    //
+    // const barbellDrawCollar = document.createElement('span')
+    // barbellDrawCollar.classList.add('barbell-draw-collar')
+    // cardBarbellDraw.appendChild(barbellDrawCollar)
+    //
+    // const barbellDrawTube = document.createElement('span')
+    // barbellDrawTube.classList.add('barbell-draw-tube')
+    // cardBarbellDraw.appendChild(barbellDrawTube)
+    //
+    // const barbellDrawCollar2 = document.createElement('span')
+    // barbellDrawCollar2.classList.add('barbell-draw-collar')
+    // cardBarbellDraw.appendChild(barbellDrawCollar2)
+    //
+    // const barbellDrawBarrel2 = document.createElement('span')
+    // barbellDrawBarrel2.classList.add('barbell-draw-barrel')
+    // cardBarbellDraw.appendChild(barbellDrawBarrel2)
 
     // Plates
     const cardPlates = document.createElement('div')
@@ -163,10 +170,17 @@ function renderResult(result){
     platesDisplay.classList.add('plates-display')
     cardPlates.appendChild(platesDisplay)
 
-    const drawnPlates = drawPlates(result)
+    const drawnPlates = drawPlates(result.platesCalculation)
 
     for (const draw of drawnPlates) {
         platesDisplay.appendChild(draw)
+    }
+
+    if (result.platesCalculation.remainingWeight > 0.01){
+        const platesDisplayRemainingWeight = document.createElement('p')
+        platesDisplayRemainingWeight.classList.add('plates-display-remaining-weight')
+        platesDisplayRemainingWeight.textContent = `Remaining weight: ${result.platesCalculation.remainingWeight.toFixed(2)} lbs`
+        cardPlates.appendChild(platesDisplayRemainingWeight)
     }
 
     resultSection.appendChild(card)
