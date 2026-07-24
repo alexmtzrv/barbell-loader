@@ -1,8 +1,36 @@
 const loadButton = document.getElementById('button')
 const barbellRadioNode = document.getElementsByName('barbell')
 const referenceWeightInput = document.getElementById('referenced-weight')
-const availablePlates = [45,35,25,15,10,5,2.5,2,1.5,1,0.5]
+// const availablePlates = [45,35,25,15,10,5,2.5,2,1.5,1,0.5]
 const resultSection = document.getElementById('resultsSection')
+const availablePlates = [45,35,25,15,10,5,2.5]
+const plateStyle = {
+    45: {
+        color: '#0057B8',
+    },
+    35: {
+        color: '#FFD60A'
+    },
+    25: {
+        color: '#00A651'
+    },
+    15: {
+        color: '#1F1F1F'
+    },
+    10: {
+        color: '#7A7A7A'
+    },
+    5: {
+        color: '#1F1F1F',
+        width: '30px',
+        height: '30px'
+    },
+    2.5: {
+        color: '#1F1F1F',
+        width: '25px',
+        height: '25px'
+    }
+}
 
 function getBarbellWeight (radioNode){
     // Iteramos los nodos y devolvemos el valor del que esté checkeado
@@ -53,6 +81,25 @@ function calculatePlates (sideWeight){
     }
 }
 
+function drawPlates(loadingArray){
+    const plateElements = []
+    for (const plate of loadingArray.platesCalculation.loadingArray) {
+        for (let i = 0; i < plate.quantity; i++){
+            const plateDisplayDraw = document.createElement('span')
+            plateDisplayDraw.classList.add('plates-display-draw')
+            plateDisplayDraw.style.backgroundColor = plateStyle[plate.plateWeight].color
+
+            if(plateStyle[plate.plateWeight].width && plateStyle[plate.plateWeight].height){
+                plateDisplayDraw.style.width = plateStyle[plate.plateWeight].width
+                plateDisplayDraw.style.height = plateStyle[plate.plateWeight].height
+            }
+
+            plateElements.push(plateDisplayDraw)
+        }
+    }
+    return plateElements
+}
+
 function renderResult(result){
     // Contenedor de caja
     const card = document.createElement('div')
@@ -61,7 +108,6 @@ function renderResult(result){
     // Porcentaje
     const cardPercentage = document.createElement('div')
     cardPercentage.classList.add('card-percentage')
-
 
     const cardPercentageText = document.createElement('p')
     cardPercentage.classList.add('card-percentage-text')
@@ -117,13 +163,11 @@ function renderResult(result){
     platesDisplay.classList.add('plates-display')
     cardPlates.appendChild(platesDisplay)
 
-    const platesDisplayDraw = document.createElement('span')
-    platesDisplayDraw.classList.add('plates-display-draw')
-    platesDisplay.appendChild(platesDisplayDraw)
+    const drawnPlates = drawPlates(result)
 
-    const platesDisplayDraw2 = document.createElement('span')
-    platesDisplayDraw2.classList.add('plates-display-draw')
-    platesDisplay.appendChild(platesDisplayDraw2)
+    for (const draw of drawnPlates) {
+        platesDisplay.appendChild(draw)
+    }
 
     resultSection.appendChild(card)
 }
