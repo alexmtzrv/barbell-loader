@@ -9,7 +9,7 @@
 <body>
 <main class="main-content">
     <header>
-        <h1 class="main-title">Barbell Loader</h1>
+        <h1 class="main-title section-title">Barbell Loader</h1>
     </header>
     <div class="main-form">
         <form action="" class="form-body">
@@ -34,7 +34,7 @@
             </div>
             <div class="form-percentage input-style">
                 <div class="percentage-text input-style-title">
-                    <label for="percentage">Enter percentage</label>
+                    <label for="percentage">Percentage (%)</label>
                 </div>
                 <div class="input-style-section">
                     <input type="number" name="percentage" id="percentage" class="input-style-input" min="10" max="100" step="0.5">
@@ -47,35 +47,46 @@
         </form>
     </div>
     <div class="main-results">
-        <h2 class="results-title">
-            RESULTS
+        <h2 class="results-title section-title">
+            Results
         </h2>
         <div  id="resultsSection" class="results-section">
-<!--            <div class="results-card">-->
-<!--                <div class="card-percentage">-->
-<!--                    <p class="card-percentage-text"></p>-->
-<!--                </div>-->
-<!--                <div class="card-barbell">-->
-<!--                    <p class="card-barbell-text"></p>-->
-<!--                    <div class="card-barbell-draw">-->
-<!--                        <span class="barbell-draw-barrel"></span>-->
-<!--                        <span class="barbell-draw-collar"></span>-->
-<!--                        <span class="barbell-draw-tube"></span>-->
-<!--                        <span class="barbell-draw-collar"></span>-->
-<!--                        <span class="barbell-draw-barrel"></span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="card-plates">-->
-<!--                    <p class="card-plates-title"></p>-->
-<!--                    <div class="plates-display">-->
-<!--                        <span class="plates-display-draw"></span>-->
-<!--                        <span class="plates-display-draw"></span>-->
-<!--                        <span class="plates-display-draw"></span>-->
-<!--                        <span class="plates-display-draw"></span>-->
-<!--                    </div>-->
-<!--                    <p class="plates-display-remaining-weight"></p>-->
-<!--                </div>-->
-<!--            </div>-->
+            <div class="result-card">
+                <div class="card-head">
+                    <div class="header-title">PERCENTAGE</div>
+                    <div class="header-number">67 % of 225 lbs</div>
+                </div>
+                <div class="card-body">
+                    <div class="body-title">
+                        Target Weight
+                    </div>
+                    <div class="body-weight">
+                        150.75 lbs
+                    </div>
+                </div>
+                <div class="card-plates">
+                    <div class="plates-title">
+                        Plates per side
+                    </div>
+                    <div class="plates-container">
+                        <div class="plates-grid">
+                            <div class="plate plate-color">
+                                <div class="plate-center"></div>
+                            </div>
+                            <p>45 lb</p>
+                            <p>x2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="footer-title">
+                        Remaining
+                    </div>
+                    <div class="footer-remaining">
+                        1.75 lb
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>
