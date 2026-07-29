@@ -4,6 +4,14 @@
     padding: 0;
 }
 
+body{
+    /*background-color: #0D1014;*/
+    --title-green : #A3E635;
+    --input-background-color: #171B20;
+    --title-font: 'Inter', sans-serif;
+    --light-gray: #DBDCE1;
+}
+
 /*STRUCTURE*/
 
 .main-content{
@@ -11,13 +19,15 @@
     flex-direction: column;
     gap: 3rem;
     padding: 10px;
-    background-color: #ffffff;
 }
 
 /*TITLE*/
 
 .main-title{
-    text-align: center;
+    text-align: start;
+    color: var(--title-green);
+    font-family: var(--title-font);
+    font-size: 60px;
 }
 
 /*FORM*/
@@ -40,74 +50,63 @@
     gap: 1.5rem;
 }
 
-.form-barbell-weight{
-    width: 100%;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.barbell-weight-text{
-    margin: 0;
-}
-
-.barbell-weight-radio-group{
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-.form-reference-weight{
+.input-style{
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: start;
-    align-items: center;
-    gap: 1rem;
+    align-items: start;
+    background-color: var(--input-background-color);
+    border: 1px solid #707177;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 1.5rem;
 }
 
-.reference-weight-text{
-
+.input-style-title{
+    width: 100%;
+    font-family: var(--title-font);
+    color: var(--light-gray);
+    font-size: 20px;
 }
 
-.reference-weight-input{
-
-}
-
-.reference-weight-input input{
-    width: 66px;
-    height: 35px;
-}
-
-.form-percentage{
+.input-style-section{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    width: 100%;
-    justify-content: start;
-    align-items: center;
-    gap: 1rem;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
 }
 
-.form-percentage input{
-    width: 66px;
-    height: 35px;
+.input-style-input{
+    flex: 1;
+    font-size: 25px;
+    background-color: transparent;
+    color: var(--light-gray);
+    border: 1px solid var(--light-gray);
+    border-radius: 5px;
+}
+
+.input-style-section span{
+    color: #707177;
+    font-size: 20px;
+    font-family: var(--title-font);
 }
 
 .form-button{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-items: center;
 }
 
 .form-button button{
-    width: 92px;
-    height: 49px;
+    width: 100%;
     font-size: 20px;
     padding: 10px;
+    font-family: var(--title-font);
+    font-weight: 600;
+    background-color: var(--title-green);
 }
 
 /*RESULTS*/

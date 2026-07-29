@@ -1,5 +1,5 @@
 const loadButton = document.getElementById('button')
-const barbellRadioNode = document.getElementsByName('barbell')
+const barbellSelect = document.getElementById('barbellWeightSelect')
 const referenceWeightInput = document.getElementById('referenced-weight')
 // const availablePlates = [45,35,25,15,10,5,2.5,2,1.5,1,0.5]
 const resultSection = document.getElementById('resultsSection')
@@ -32,14 +32,14 @@ const plateStyle = {
     }
 }
 
-function getBarbellWeight (radioNode){
-    // Iteramos los nodos y devolvemos el valor del que esté checkeado
-    for (const element of radioNode) {
-        if (element.checked){
-            return element.value
-        }
-    }
-}
+// function getBarbellWeight (radioNode){
+//     // Iteramos los nodos y devolvemos el valor del que esté checkeado
+//     for (const element of radioNode) {
+//         if (element.checked){
+//             return element.value
+//         }
+//     }
+// }
 
 function convertPercentage (percent){
     return (percent/100)
@@ -188,7 +188,7 @@ function renderResult(result){
 
 loadButton.addEventListener('click', () => {
     // Guardamos el peso de la barra elegida
-    const emptyBarbellWeight = parseInt(getBarbellWeight(barbellRadioNode))
+    const emptyBarbellWeight = Number(barbellSelect.value)
     // Guardamos el peso a ser referenciado
     const referenceWeight = parseFloat(referenceWeightInput.value)
     // Guardamos el peso total del porcentaje y el peso de carga de discos

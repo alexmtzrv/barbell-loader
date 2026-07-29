@@ -9,43 +9,40 @@
 <body>
 <main class="main-content">
     <header>
-        <h1 class="main-title">BARBELL LOADER</h1>
+        <h1 class="main-title">Barbell Loader</h1>
     </header>
     <div class="main-form">
         <form action="" class="form-body">
-            <fieldset class="form-barbell-weight">
-                <legend class="barbell-weight-text">Barbell Weight</legend>
-                <div class="barbell-weight-radio-group">
-                    <div class="radio-group-35-lb">
-                        <input type="radio" name="barbell" id="35-lb-barbell" value="35" checked>
-                        <label for="35-lb-barbell">35 lbs</label>
-                    </div>
-                    <div class="radio-group-45-lb">
-                        <input type="radio" name="barbell" id="45-lb-barbell" value="45">
-                        <label for="45-lb-barbell">45 lbs</label>
-                    </div>
-                </div>
-            </fieldset>
-            <div class="form-reference-weight">
-                <div class="reference-weight-text">
-                    <label for="referenced-weight">Enter weight to be referenced</label>
-                </div>
-                <div class="reference-weight-input">
-                    <input type="number" name="referencedWeight" id="referenced-weight"  min="35" max="100" step="0.5">
-                    <span>lbs</span>
+            <div class="form-barbell-weight input-style">
+                <div class="barbell-weight-text input-style-title">Barbell Weight (lb)</div>
+                <div class="barbell-weight-input input-style-section">
+                    <select id="barbellWeightSelect" class="barbell-weight-select input-style-input">
+                        <option value="35">35</option>
+                        <option value="45">45</option>
+                    </select>
+                    <span>LB</span>
                 </div>
             </div>
-            <div class="form-percentage">
-                <div class="percentage-text">
+            <div class="form-reference-weight input-style">
+                <div class="reference-weight-text input-style-title">
+                    <label for="referenced-weight">PR Weight (lb)</label>
+                </div>
+                <div class="input-style-section">
+                    <input type="number" name="referencedWeight" id="referenced-weight" class="input-style-input" min="35" max="100" step="0.5">
+                    <span>LB</span>
+                </div>
+            </div>
+            <div class="form-percentage input-style">
+                <div class="percentage-text input-style-title">
                     <label for="percentage">Enter percentage</label>
                 </div>
-                <div class="percentage-input">
-                    <input type="number" name="percentage" id="percentage" min="10" max="100" step="0.5">
-                    <span>%</span>
+                <div class="input-style-section">
+                    <input type="number" name="percentage" id="percentage" class="input-style-input" min="10" max="100" step="0.5">
+                    <span>LB</span>
                 </div>
             </div>
             <div class="form-button">
-                <button id="button" type="button">LOAD!</button>
+                <button id="button" type="button">LOAD WEIGHT</button>
             </div>
         </form>
     </div>
