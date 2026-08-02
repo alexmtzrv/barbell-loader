@@ -309,15 +309,68 @@ body{
     pointer-events: none;
 }
 
-.plate-color {
-    border: 3px solid #5e9bdf;
+/* 45 lb */
+.plate-blue {
+    border: 3px solid #5E9BDF;
 
     background: radial-gradient(
             circle at 30% 25%,
-            #5e9bdf 0%,
-            #3979bd 38%,
+            #5E9BDF 0%,
+            #3979BD 38%,
             #215997 72%,
             #174577 100%
+    );
+}
+
+/* 35 lb */
+.plate-yellow {
+    border: 3px solid #FFE36B;
+
+    background: radial-gradient(
+            circle at 30% 25%,
+            #FFE36B 0%,
+            #FFD60A 38%,
+            #D9B300 72%,
+            #A78300 100%
+    );
+}
+
+/* 25 lb */
+.plate-green {
+    border: 3px solid #55D784;
+
+    background: radial-gradient(
+            circle at 30% 25%,
+            #55D784 0%,
+            #00A651 38%,
+            #008B43 72%,
+            #005F2D 100%
+    );
+}
+
+/* 15 lb / 5 lb / 2.5 lb */
+.plate-black {
+    border: 3px solid #676767;
+
+    background: radial-gradient(
+            circle at 30% 25%,
+            #4A4A4A 0%,
+            #2F2F2F 38%,
+            #1F1F1F 72%,
+            #090909 100%
+    );
+}
+
+/* 10 lb */
+.plate-gray {
+    border: 3px solid #BEBEBE;
+
+    background: radial-gradient(
+            circle at 30% 25%,
+            #CFCFCF 0%,
+            #A7A7A7 38%,
+            #7A7A7A 72%,
+            #555555 100%
     );
 }
 

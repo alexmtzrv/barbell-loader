@@ -6,41 +6,36 @@ const resultSection = document.getElementById('resultsSection')
 const availablePlates = [45,35,25,15,10,5,2.5]
 const plateStyle = {
     45: {
-        color: '#0057B8',
+        info: '45 lb',
+        class: 'plate-blue'
     },
     35: {
-        color: '#FFD60A'
+        info: '35 lb',
+        class: 'plate-yellow'
     },
     25: {
-        color: '#00A651'
+        info: '25 lb',
+        class: 'plate-green'
     },
     15: {
-        color: '#1F1F1F'
+        info: '15 lb',
+        class: 'plate-black'
     },
     10: {
-        color: '#7A7A7A'
+        info: '10 lb',
+        class: 'plate-gray'
     },
     5: {
-        color: '#1F1F1F',
-        width: '30px',
-        height: '30px'
+        info: '5 lb',
+        class: 'plate-black',
+        size: '30px',
     },
     2.5: {
-        color: '#1F1F1F',
-        width: '25px',
-        height: '25px'
+        info: '2.5 lb',
+        class: 'plate-black',
+        size: '25px',
     }
 }
-
-// function getBarbellWeight (radioNode){
-//     // Iteramos los nodos y devolvemos el valor del que esté checkeado
-//     for (const element of radioNode) {
-//         if (element.checked){
-//             return element.value
-//         }
-//     }
-// }
-
 function convertPercentage (percent){
     return (percent/100)
 }
@@ -81,109 +76,124 @@ function calculatePlates (sideWeight){
     }
 }
 
-function drawPlates(result){
-    // Creamos un array que almacenará elementos span que representan los discos a renderizar
-    const plateElements = []
-    // Recorremos el parámetro que es un array de discos por lado del resultado
-    for (const plate of result.loadingArray) {
-        // Hace un loop para producir n cantidad de discos de cada peso
-        for (let i = 0; i < plate.quantity; i++){
-            // Guardamos el objeto que corresponde al disco según su peso
-            const style = plateStyle[plate.plateWeight]
-            // Creamos el elemento span
-            const plateDisplayDraw = document.createElement('span')
-            plateDisplayDraw.classList.add('plates-display-draw')
-            // Mediante el objeto guardado anteriormente, asignamos color al disco
-            plateDisplayDraw.style.backgroundColor = style.color
-            // Si el objeto tiene un width y height específico, lo asignamos
-            if(style.width && style.height){
-                plateDisplayDraw.style.width = style.width
-                plateDisplayDraw.style.height = style.height
-            }
-            // Guardamos ese disco en el arreglo
-            plateElements.push(plateDisplayDraw)
+// Esta función recibe el valor de loadingArray, el cual contiene plateWeight y quantity
+function populatePlateGrid(loadingArray){
+    // Creamos el grid
+    const platesGrid = document.createElement('div')
+    platesGrid.classList.add('plates-grid')
+    // Iteramos el objeto
+    for (const plate of loadingArray){
+        // Creamos una referencia para acceder facilmente al mapa de colores
+        const style = plateStyle[plate.plateWeight]
+        // Creamos el cuerpo del disco y se le asgina el color mediante el mapa
+        const plateBody = document.createElement('div')
+        plateBody.classList.add('plate', style.class)
+        // Si el objeto tiene una medida en específico se lo asignamos
+        if (style.size){
+            plateBody.style.width = style.size
         }
+
+        const plateCenter = document.createElement('div')
+        plateCenter.classList.add('plate-center')
+        plateBody.appendChild(plateCenter)
+
+        const plateText = document.createElement('p')
+        plateText.classList.add('plate-weight')
+        plateText.textContent = style.info
+
+        const plateQuantity = document.createElement('p')
+        plateQuantity.classList.add('plate-quantity')
+        plateQuantity.textContent = `×${plate.quantity}`
+        // Agregamos los valores al grid en cada iteracion
+        platesGrid.append(plateBody, plateText,plateQuantity)
     }
-    return plateElements
+    // Devolvemos el elemento grid
+    return platesGrid
 }
 
-function renderResult(result){
-    // Contenedor de caja
-    const card = document.createElement('div')
-    card.classList.add('results-card')
+function renderResult(loadingResult){
+    const resultCard = document.createElement('div')
+    resultCard.classList.add('result-card')
 
-    // Porcentaje
-    const cardPercentage = document.createElement('div')
-    cardPercentage.classList.add('card-percentage')
-
-    const cardPercentageText = document.createElement('p')
-    cardPercentage.classList.add('card-percentage-text')
-    cardPercentageText.textContent = `${result.percentage.toFixed(2)} % of ${result.referenceWeight.toFixed(2)} lbs = ${result.weightCalculation.targetWeight.toFixed(2)} lbs`
-    cardPercentage.appendChild(cardPercentageText)
-    card.appendChild(cardPercentage)
-
-    // Barbell
-    const cardBarbell = document.createElement('div')
-    cardBarbell.classList.add('card-barbell')
-    card.appendChild(cardBarbell)
-
-    const cardBarbellText = document.createElement('p')
-    cardBarbellText.classList.add('card-barbell-text')
-    cardBarbellText.textContent = `Barbell : ${result.emptyBarbellWeight}`
-    cardBarbell.appendChild(cardBarbellText)
-
-    // const cardBarbellDraw = document.createElement('div')
-    // cardBarbellDraw.classList.add('card-barbell-draw')
-    // cardBarbell.appendChild(cardBarbellDraw)
     //
-    // const barbellDrawBarrel = document.createElement('span')
-    // barbellDrawBarrel.classList.add('barbell-draw-barrel')
-    // cardBarbellDraw.appendChild(barbellDrawBarrel)
-    //
-    // const barbellDrawCollar = document.createElement('span')
-    // barbellDrawCollar.classList.add('barbell-draw-collar')
-    // cardBarbellDraw.appendChild(barbellDrawCollar)
-    //
-    // const barbellDrawTube = document.createElement('span')
-    // barbellDrawTube.classList.add('barbell-draw-tube')
-    // cardBarbellDraw.appendChild(barbellDrawTube)
-    //
-    // const barbellDrawCollar2 = document.createElement('span')
-    // barbellDrawCollar2.classList.add('barbell-draw-collar')
-    // cardBarbellDraw.appendChild(barbellDrawCollar2)
-    //
-    // const barbellDrawBarrel2 = document.createElement('span')
-    // barbellDrawBarrel2.classList.add('barbell-draw-barrel')
-    // cardBarbellDraw.appendChild(barbellDrawBarrel2)
+    const cardHead = document.createElement('div')
+    cardHead.classList.add('card-head')
 
-    // Plates
+    const headerTitle = document.createElement('p')
+    headerTitle.classList.add('header-title')
+    headerTitle.textContent = 'PERCENTAGE'
+
+    const headerNumber = document.createElement('p')
+    headerNumber.classList.add('header-number')
+
+    const spanNumber = document.createElement('span')
+    spanNumber.classList.add('span-number')
+    spanNumber.textContent = `${loadingResult.percentage}`
+
+    const spanPercent = document.createElement('span')
+    spanPercent.classList.add('span-percent')
+    spanPercent.textContent = '% of'
+
+    const spanPr = document.createElement('span')
+    spanPr.classList.add('span-pr')
+    spanPr.textContent = `${loadingResult.referenceWeight} lb`
+    headerNumber.append(spanNumber,spanPercent,spanPr)
+    cardHead.append(headerTitle,headerNumber)
+
+    resultCard.append(cardHead)
+
+    //
+
+    const cardBody = document.createElement('div')
+    cardBody.classList.add('card-body')
+
+    const bodyTitle = document.createElement('div')
+    bodyTitle.classList.add('body-title')
+    bodyTitle.textContent = 'Target Weight'
+
+    const bodyWeight = document.createElement('div')
+    bodyWeight.classList.add('body-weight')
+    bodyWeight.textContent = `${loadingResult.weightCalculation.targetWeight.toFixed(2)} lbs`
+
+    cardBody.append(bodyTitle, bodyWeight)
+    resultCard.append(cardBody)
+
+    //
     const cardPlates = document.createElement('div')
     cardPlates.classList.add('card-plates')
-    card.appendChild(cardPlates)
 
-    const cardPlatesTitle = document.createElement('p')
-    cardPlatesTitle.classList.add('card-plates-title')
-    cardPlatesTitle.textContent = `Plates per side`
-    cardPlates.appendChild(cardPlatesTitle)
+    const platesTitle = document.createElement('div')
+    platesTitle.classList.add('plates-title')
+    platesTitle.textContent = 'Plates per side'
 
-    const platesDisplay = document.createElement('div')
-    platesDisplay.classList.add('plates-display')
-    cardPlates.appendChild(platesDisplay)
+    const platesContainer = document.createElement('div')
+    platesContainer.classList.add('plates-container')
 
-    const drawnPlates = drawPlates(result.platesCalculation)
+    const platesGrid = populatePlateGrid(loadingResult.platesCalculation.loadingArray)
 
-    for (const draw of drawnPlates) {
-        platesDisplay.appendChild(draw)
+    platesContainer.appendChild(platesGrid)
+
+    if (loadingResult.platesCalculation.remainingWeight > 0.01){
+        const cardFooter = document.createElement('div')
+        cardFooter.classList.add('card-footer')
+
+        const footerTitle = document.createElement('div')
+        footerTitle.classList.add('footer-title')
+        footerTitle.textContent = 'Remaining'
+
+        const footerRemaining = document.createElement('div')
+        footerRemaining.classList.add('footer-remaining')
+        footerRemaining.textContent = `${loadingResult.platesCalculation.remainingWeight.toFixed(2)} lb`
+
+        cardFooter.append(footerTitle,footerRemaining)
+        platesContainer.append(cardFooter)
     }
 
-    if (result.platesCalculation.remainingWeight > 0.01){
-        const platesDisplayRemainingWeight = document.createElement('p')
-        platesDisplayRemainingWeight.classList.add('plates-display-remaining-weight')
-        platesDisplayRemainingWeight.textContent = `Remaining weight: ${result.platesCalculation.remainingWeight.toFixed(2)} lbs`
-        cardPlates.appendChild(platesDisplayRemainingWeight)
-    }
+    cardPlates.append(platesTitle,platesContainer)
+    resultCard.append(cardPlates)
 
-    resultSection.appendChild(card)
+
+    resultSection.appendChild(resultCard)
 }
 
 loadButton.addEventListener('click', () => {
