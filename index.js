@@ -111,6 +111,10 @@ function populatePlateGrid(loadingArray){
     return platesGrid
 }
 
+function formatWeight (weight){
+    return Number.isInteger(weight) ? weight : weight.toFixed(2)
+}
+
 function renderResult(loadingResult){
     const resultCard = document.createElement('div')
     resultCard.classList.add('result-card')
@@ -153,7 +157,8 @@ function renderResult(loadingResult){
 
     const bodyWeight = document.createElement('div')
     bodyWeight.classList.add('body-weight')
-    bodyWeight.textContent = `${loadingResult.weightCalculation.targetWeight.toFixed(2)} lbs`
+    // bodyWeight.textContent = `${loadingResult.weightCalculation.targetWeight.toFixed(2)} lbs`
+    bodyWeight.textContent = `${formatWeight(loadingResult.weightCalculation.targetWeight)} lbs`
 
     cardBody.append(bodyTitle, bodyWeight)
     resultCard.append(cardBody)
@@ -183,7 +188,8 @@ function renderResult(loadingResult){
 
         const footerRemaining = document.createElement('div')
         footerRemaining.classList.add('footer-remaining')
-        footerRemaining.textContent = `${loadingResult.platesCalculation.remainingWeight.toFixed(2)} lb`
+        // footerRemaining.textContent = `${loadingResult.platesCalculation.remainingWeight.toFixed(2)} lb`
+        footerRemaining.textContent = `${formatWeight(loadingResult.platesCalculation.remainingWeight)} lb`
 
         cardFooter.append(footerTitle,footerRemaining)
         platesContainer.append(cardFooter)
