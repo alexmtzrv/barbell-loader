@@ -123,9 +123,9 @@ function renderResult(loadingResult){
     const cardHead = document.createElement('div')
     cardHead.classList.add('card-head')
 
-    const headerTitle = document.createElement('p')
-    headerTitle.classList.add('header-title')
-    headerTitle.textContent = 'PERCENTAGE'
+    // const headerTitle = document.createElement('p')
+    // headerTitle.classList.add('header-title')
+    // headerTitle.textContent = 'PERCENTAGE'
 
     const headerNumber = document.createElement('p')
     headerNumber.classList.add('header-number')
@@ -136,13 +136,13 @@ function renderResult(loadingResult){
 
     const spanPercent = document.createElement('span')
     spanPercent.classList.add('span-percent')
-    spanPercent.textContent = '% of'
+    spanPercent.textContent = '%'
 
     const spanPr = document.createElement('span')
     spanPr.classList.add('span-pr')
-    spanPr.textContent = `${loadingResult.referenceWeight} lb`
+    spanPr.textContent = `of ${loadingResult.referenceWeight} lb`
     headerNumber.append(spanNumber,spanPercent,spanPr)
-    cardHead.append(headerTitle,headerNumber)
+    cardHead.append(headerNumber)
 
     resultCard.append(cardHead)
 

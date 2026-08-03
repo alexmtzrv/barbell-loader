@@ -11,6 +11,9 @@ body{
     --input-background-color: #171B20;
     --title-font: 'Inter', sans-serif;
     --light-gray: #DBDCE1;
+    --title-fs: 25px;
+    --text-fs: 18px;
+    --input-fs:22px;
     background-color: #0D1014;
 }
 
@@ -29,7 +32,7 @@ body{
 .section-title{
     text-align: start;
     color: var(--title-green);
-    font-size: 35px;
+    font-size: var(--title-fs);
 }
 
 /*FORM*/
@@ -51,7 +54,7 @@ input[type="number"] {
     width: 100%;
     justify-content: start;
     align-items: start;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .form-body{
@@ -79,7 +82,7 @@ input[type="number"] {
 .input-style-title{
     width: 100%;
     color: var(--light-gray);
-    font-size: 20px;
+    font-size: var(--text-fs);
 }
 
 .input-style-section{
@@ -94,7 +97,7 @@ input[type="number"] {
 .input-style-input{
     flex: 1;
     width: 100%;
-    font-size: 25px;
+    font-size: var(--input-fs);
     background-color: #13161B;
     color: var(--light-gray);
     /*border: 1px solid #707177;*/
@@ -110,6 +113,7 @@ input[type="number"] {
 #barbellWeightSelect{
     appearance: none;
     border-radius: 0;
+    /*padding: 5px 20px;*/
 }
 
 #select-arrow{
@@ -127,14 +131,14 @@ input[type="number"] {
 
 .input-style-section span{
     color: #707177;
-    font-size: 20px;
+    font-size: var(--text-fs);
 }
 
 .form-button{
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .form-button button{
@@ -202,8 +206,8 @@ input[type="number"] {
 .header-title{
     width: 100%;
     color: var(--title-green);
-    font-size: 25px;
-    font-weight: 400;
+    font-size: var(--title-fs);
+    font-weight: 200;
 }
 
 .header-number{
@@ -211,21 +215,22 @@ input[type="number"] {
     display: flex;
     align-items: center;
     gap: 10px;
+    color: var(--title-green);
 }
 
 .span-number{
-    font-size:50px;
+    font-size: 28px;
     font-weight: 800;
 }
 
 .span-percent{
-    font-size:22px ;
-    color: var(--light-gray);
+    font-size:20px ;
+    color: var(--title-green);
     font-weight: 400;
 }
 
 .span-pr{
-    font-size:30px ;
+    font-size:24px ;
     color: var(--light-gray);
     font-weight: 600;
 }
@@ -233,7 +238,7 @@ input[type="number"] {
 .card-body{
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
     align-items: start;
     gap: 1.5rem;
@@ -245,11 +250,12 @@ input[type="number"] {
 
 .body-title{
     color: var(--title-green);
-    font-size: 20px;
+    font-size: var(--text-fs);
 }
 
 .body-weight{
     font-size: 20px;
+    font-weight: 600;
     color: var(--light-gray);
 }
 
@@ -267,7 +273,7 @@ input[type="number"] {
 
 .plates-title{
     color: var(--title-green);
-    font-size: 20px;
+    font-size: var(--text-fs);
 }
 
 .plates-container{
@@ -281,22 +287,22 @@ input[type="number"] {
 .plates-grid{
     width: 80%;
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    padding: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 .plate-weight{
-    font-size: 20px;
-    justify-self: start;
+    font-size: var(--text-fs);
+    justify-self: center;
     color: var(--light-gray);
 }
 
 .plate-quantity{
-    font-size: 25px;
+    font-size: var(--text-fs);
     color: var(--title-green);
-    justify-self: end;
+    font-weight: 600;
+    justify-self: center;
 }
 
 .card-footer{
@@ -308,19 +314,19 @@ input[type="number"] {
 
 .footer-title{
     color: var(--title-green);
-    font-size: 20px;
+    font-size: var(--text-fs);
     font-weight: 200;
 }
 
 .footer-remaining{
-    font-size: 20px;
+    font-size: var(--text-fs);
     color: var(--light-gray);
 }
 
 .plate {
     position: relative;
 
-    width: 60px;
+    width: 40px;
     aspect-ratio: 1;
 
     display: flex;
