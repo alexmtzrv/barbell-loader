@@ -69,9 +69,9 @@ input[type="number"] {
 .input-style{
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
-    align-items: start;
+    align-items: center;
     background-color: var(--input-background-color);
     border: 1px solid #707177;
     border-radius: 10px;
@@ -80,7 +80,7 @@ input[type="number"] {
 }
 
 .input-style-title{
-    width: 100%;
+    text-wrap: nowrap;
     color: var(--light-gray);
     font-size: var(--text-fs);
 }
@@ -90,24 +90,22 @@ input[type="number"] {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     gap: 1.5rem;
 }
 
 .input-style-input{
     flex: 1;
-    width: 100%;
     font-size: var(--input-fs);
     background-color: #13161B;
-    color: var(--light-gray);
+    color: var(--title-green);
     /*border: 1px solid #707177;*/
     /*border-radius: 5px;*/
     border: none;
-    padding: 5px 20px;
+    padding: 5px 10px;
 }
 
 .barbell-weight-input{
-    position: relative;
+    /*position: relative;*/
 }
 
 #barbellWeightSelect{
@@ -143,7 +141,7 @@ input[type="number"] {
 
 .form-button button{
     width: 100%;
-    font-size: 20px;
+    font-size: var(--title-font);
     padding: 15px;
     font-weight: 600;
     background-color: var(--title-green);
@@ -172,7 +170,7 @@ input[type="number"] {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
     gap: 1.5rem;
     padding: 10px 40px;
