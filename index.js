@@ -1,7 +1,7 @@
-const loadButton = document.getElementById('button')
+const loadButton = document.getElementById('buttonLoad')
+const clearButton = document.getElementById('buttonClear')
 const barbellSelect = document.getElementById('barbellWeightSelect')
 const referenceWeightInput = document.getElementById('referenced-weight')
-// const availablePlates = [45,35,25,15,10,5,2.5,2,1.5,1,0.5]
 const resultSection = document.getElementById('resultsSection')
 const availablePlates = [45,35,25,15,10,5,2.5]
 const plateStyle = {
@@ -109,6 +109,10 @@ function populatePlateGrid(loadingArray){
     }
     // Devolvemos el elemento grid
     return platesGrid
+}
+
+function clearResults(results){
+    results.replaceChildren()
 }
 
 function formatWeight (weight){
@@ -222,5 +226,9 @@ loadButton.addEventListener('click', () => {
     }
     console.log(loadingResult)
     renderResult(loadingResult)
+})
+
+clearButton.addEventListener('click', () => {
+    clearResults(resultSection)
 })
 

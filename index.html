@@ -29,7 +29,7 @@
                     <label for="referenced-weight">PR Weight (lb)</label>
                 </div>
                 <div class="input-style-section">
-                    <input type="number" name="referencedWeight" id="referenced-weight" class="input-style-input">
+                    <input type="number" name="referencedWeight" id="referenced-weight" class="input-style-input" required>
                     <span>LB</span>
                 </div>
             </div>
@@ -38,12 +38,12 @@
                     <label for="percentage">Percentage (%)</label>
                 </div>
                 <div class="input-style-section">
-                    <input type="number" name="percentage" id="percentage" class="input-style-input">
+                    <input type="number" name="percentage" id="percentage" class="input-style-input" required>
                     <span>LB</span>
                 </div>
             </div>
             <div class="form-button">
-                <button id="button" type="button">LOAD WEIGHT</button>
+                <button id="buttonLoad" type="button">LOAD WEIGHT</button>
             </div>
         </form>
     </div>
@@ -51,47 +51,10 @@
         <h2 class="results-title section-title">
             Results
         </h2>
+        <div class="form-button">
+            <button id="buttonClear" type="button">CLEAR ALL</button>
+        </div>
         <div id="resultsSection" class="results-section">
-<!--            <div class="result-card">-->
-<!--                <div class="card-head">-->
-<!--                    <div class="header-title">PERCENTAGE</div>-->
-<!--                    <div class="header-number">-->
-<!--                        <span class="span-number">67</span>-->
-<!--                        <span class="span-percent">% of</span>-->
-<!--                        <span class="span-pr">225 lbs</span>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <div class="body-title">-->
-<!--                        Target Weight-->
-<!--                    </div>-->
-<!--                    <div class="body-weight">-->
-<!--                        150.75 lbs-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="card-plates">-->
-<!--                    <div class="plates-title">-->
-<!--                        Plates per side-->
-<!--                    </div>-->
-<!--                    <div class="plates-container">-->
-<!--                        <div class="plates-grid">-->
-<!--                            <div class="plate">-->
-<!--                                <div class="plate-center"></div>-->
-<!--                            </div>-->
-<!--                            <p class="plate-weight">45 lb</p>-->
-<!--                            <p class="plate-quantity">× 2</p>-->
-<!--                        </div>-->
-<!--                        <div class="card-footer">-->
-<!--                            <div class="footer-title">-->
-<!--                                Remaining-->
-<!--                            </div>-->
-<!--                            <div class="footer-remaining">-->
-<!--                                1.75 lb-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
     </div>
 </main>
