@@ -15,7 +15,6 @@ body{
     --text-fs: 18px;
     --input-fs:22px;
     background-color: #0D1014;
-    height: 100vh;
 }
 
 /*STRUCTURE*/
@@ -163,16 +162,14 @@ input[type="number"] {
     background-color: var(--input-background-color);
     color: var(--title-green);
     border: 2px solid var(--title-green);
-    margin-top: 0.5rem;
-    /*position: sticky;*/
-    /*top: 1rem;*/
+    margin-top: 1rem;
 }
 
 /*RESULTS*/
 
-.main-results{
+.main-results {
     width: 100%;
-    flex-grow: 1;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: start;
