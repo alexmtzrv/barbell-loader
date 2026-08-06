@@ -8,11 +8,8 @@
 </head>
 <body>
 <main class="main-content">
-    <header>
-<!--        <h1 class="main-title section-title">Barbell Loader</h1>-->
-    </header>
     <div class="main-form">
-        <form action="" class="form-body">
+        <form id="form" class="form-body">
             <div class="form-barbell-weight input-style">
                 <div class="barbell-weight-text input-style-title">Barbell Weight (lb)</div>
                 <div class="barbell-weight-input input-style-section">
@@ -20,7 +17,6 @@
                         <option value="35">35</option>
                         <option value="45" selected>45</option>
                     </select>
-<!--                    <span id="select-arrow"></span>-->
                     <span>LB</span>
                 </div>
             </div>
@@ -29,7 +25,7 @@
                     <label for="referenced-weight">PR Weight (lb)</label>
                 </div>
                 <div class="input-style-section">
-                    <input type="number" name="referencedWeight" id="referenced-weight" class="input-style-input" required>
+                    <input type="number" name="referencedWeight" id="referenced-weight" class="input-style-input" placeholder="225" min="0" required>
                     <span>LB</span>
                 </div>
             </div>
@@ -38,12 +34,12 @@
                     <label for="percentage">Percentage (%)</label>
                 </div>
                 <div class="input-style-section">
-                    <input type="number" name="percentage" id="percentage" class="input-style-input" required>
+                    <input type="number" name="percentage" id="percentage" class="input-style-input" placeholder="80%"  min="1" max="150" required>
                     <span>LB</span>
                 </div>
             </div>
             <div class="form-button">
-                <button id="buttonLoad" type="button">LOAD WEIGHT</button>
+                <button id="buttonLoad" type="submit">LOAD WEIGHT</button>
             </div>
         </form>
     </div>

@@ -1,7 +1,8 @@
-const loadButton = document.getElementById('buttonLoad')
+const form = document.getElementById('form')
 const clearButton = document.getElementById('buttonClear')
 const barbellSelect = document.getElementById('barbellWeightSelect')
 const referenceWeightInput = document.getElementById('referenced-weight')
+const percentageWeightInput = document.getElementById('percentage')
 const resultSection = document.getElementById('resultsSection')
 const availablePlates = [45,35,25,15,10,5,2.5]
 const plateStyle = {
@@ -35,6 +36,11 @@ const plateStyle = {
         class: 'plate-black',
         size: '25px',
     }
+}
+
+function formHandler(event){
+    event.preventDefault()
+
 }
 function convertPercentage (percent){
     return (percent/100)
@@ -206,16 +212,32 @@ function renderResult(loadingResult){
     resultSection.appendChild(resultCard)
 }
 
-loadButton.addEventListener('click', () => {
+form.addEventListener('submit', (event) => {
+    event.preventDefault()
     // Guardamos el peso de la barra elegida
     const emptyBarbellWeight = Number(barbellSelect.value)
     // Guardamos el peso a ser referenciado
     const referenceWeight = parseFloat(referenceWeightInput.value)
+    if (referenceWeight <= emptyBarbellWeight) {
+        alert('PR Weight must be greater than the barbell weight.')
+        return
+    }
     // Guardamos el peso total del porcentaje y el peso de carga de discos
-    const percentage = parseFloat(document.getElementById('percentage').value)
+    const percentage = parseFloat(percentageWeightInput.value)
+    if (percentage <= 0) {
+        alert('Invalid percentage.')
+        return
+    }
     const weightCalculation = calculateRealWeight(emptyBarbellWeight, referenceWeight, convertPercentage(percentage))
     // Calculamos los diferente discos a cargar de cada lado y lo guardamos en una variable
     const platesCalculation = calculatePlates(weightCalculation.weightBySide)
+
+
+    if (platesCalculation.loadingArray.length === 0) {
+        alert('Invalid plates calculation.')
+        return
+    }
+
     // Creamos un objeto para almacenar toda la información del porcentaje consultado
     const loadingResult = {
         emptyBarbellWeight,
@@ -230,5 +252,7 @@ loadButton.addEventListener('click', () => {
 
 clearButton.addEventListener('click', () => {
     clearResults(resultSection)
+    referenceWeightInput.value = ''
+    percentageWeightInput.value = ''
 })
 

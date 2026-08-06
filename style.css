@@ -97,25 +97,23 @@ input[type="number"] {
     width: 80%;
 }
 
+.input-style-section input::placeholder{
+    color: #576242;
+}
+
 .input-style-input{
     flex-grow: 1;
     font-size: var(--input-fs);
     background-color: #13161B;
     color: var(--title-green);
-    /*border: 1px solid #707177;*/
-    /*border-radius: 5px;*/
     border: none;
     padding: 5px 10px;
 }
 
-.barbell-weight-input{
-    /*position: relative;*/
-}
 
 #barbellWeightSelect{
     appearance: none;
     border-radius: 0;
-    /*padding: 5px 20px;*/
 }
 
 #select-arrow{
