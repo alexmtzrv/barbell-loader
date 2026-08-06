@@ -15,6 +15,7 @@ body{
     --text-fs: 18px;
     --input-fs:22px;
     background-color: #0D1014;
+    min-height: 100dvh;
 }
 
 /*STRUCTURE*/
@@ -181,16 +182,13 @@ input[type="number"] {
 .results-header{
     width: 100%;
     display: flex;
-    background-color: #0D1014;
     flex-direction: column;
-    position: sticky;
-    /*top: 0;*/
-    /*z-index: 10;*/
 
-    top: env(safe-area-inset-top);
+    position: sticky;
+    top: 0;
     z-index: 100;
 
-    /*background-color: var(--background);*/
+    background-color: #0D1014;
 }
 
 .results-title{
