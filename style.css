@@ -24,6 +24,8 @@ body{
     flex-direction: column;
     gap: 1.5rem;
     padding: 1rem;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 /*TITLE*/
