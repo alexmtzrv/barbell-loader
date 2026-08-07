@@ -15,7 +15,6 @@ body{
     --text-fs: 18px;
     --input-fs:22px;
     background-color: #0D1014;
-    min-height: 100dvh;
 }
 
 /*STRUCTURE*/
@@ -25,8 +24,6 @@ body{
     flex-direction: column;
     gap: 1.5rem;
     padding: 1rem;
-    min-height: 100vh;
-    min-height: 100dvh;
 }
 
 /*TITLE*/
@@ -170,25 +167,23 @@ input[type="number"] {
 
 .main-results {
     width: 100%;
-    /*max-height: 100vh;*/
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     padding:0 10px;
-    /*overflow: hidden;*/
 }
 
 .results-header{
     width: 100%;
     display: flex;
     flex-direction: column;
-
     position: sticky;
     top: 0;
     z-index: 100;
-
     background-color: #0D1014;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--title-green);
 }
 
 .results-title{
@@ -199,14 +194,12 @@ input[type="number"] {
 .results-section{
     width: 100%;
     display: flex;
-    /*flex-grow: 1;*/
     flex-direction: column;
     justify-content: start;
     align-items: start;
     gap: 1.5rem;
     padding: 10px 40px;
     margin-top: 1.5rem;
-    /*overflow: scroll;*/
 }
 
 .result-card{
