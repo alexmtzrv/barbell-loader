@@ -3,6 +3,10 @@
 > A simple and visual tool for athletes who want to spend less time calculating weights and more time lifting.
 
 <p align="center">
+  <img width="487" height="443" alt="image" src="https://github.com/user-attachments/assets/d55897b4-7398-4afb-88a5-94b79b1e865d" />
+</p>
+
+<p align="center">
   <a href="https://barbell-loader-henna.vercel.app/">
     <strong>🚀 Live Demo</strong>
   </a>
