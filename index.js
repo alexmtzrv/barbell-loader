@@ -248,6 +248,7 @@ form.addEventListener('submit', (event) => {
     }
     console.log(loadingResult)
     renderResult(loadingResult)
+    percentageWeightInput.value = ''
 })
 
 clearButton.addEventListener('click', () => {
