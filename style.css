@@ -146,7 +146,7 @@ input[type="number"] {
 .form-button button{
     width: 100%;
     color: inherit;
-    font-size: var(--title-font);
+    font-size: var(--text-fs);
     padding: 15px;
     font-weight: 600;
     border: none;
